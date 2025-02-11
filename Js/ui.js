@@ -20,9 +20,17 @@ const ui = {
     try {
       const pensamentos = await api.buscarPensamentos();
       pensamentos.forEach(ui.adicionarPensamentosNaLista);
+
+      if (pensamentos.length === 0) {
+        mensagemVazia.style.display = "block";
+      } else {
+        mensagemVazia.style.display = "none";
+        //pensamentos.forEach(ui.adicionarPensamentosLista);
+      }
     } catch {
       alert("Erro ao renderizar pensamentos");
     }
+    
   },
 
   adicionarPensamentosNaLista(pensamento) {
